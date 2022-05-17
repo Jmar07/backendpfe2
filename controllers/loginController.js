@@ -32,7 +32,8 @@ res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
                     req.session.username = username;
 
                     res.statusCode = 202
-                    res.send("jawek behi")
+                    res.send(results);
+                    //res.send("jawek behi")
                 }
             })
 
