@@ -6,8 +6,6 @@ const moduleController = require("./controllers/moduleController")
 const personnelController = require("./controllers/personnelController")
 const accompController = require("./controllers/accompController");
 const form = require('./controllers/form')
-const { append } = require("express/lib/response");
-const { route } = require("express/lib/application");
 const app = express();
 
 
@@ -19,8 +17,10 @@ router.get("/client",clientController.client);
 router.post("/module",moduleController.module);
 router.get("/module",moduleController.module);
 
+router.get("/module/:id" , moduleController.getModule)
+
 router.post("/personnel",personnelController.personnel);
-router.get("/personnel",personnelController.personnel);
+router.get("/personnel/:id",personnelController.personnel);
 
 router.post("/accomp",accompController.accomp);
 router.get("/accomp",accompController.accomp);
@@ -30,9 +30,12 @@ router.post("/data",)
 
 
 router.post("/form",form.insert)
+router.get("/form/:id",form.getForm)
 
 
+router.post("/formModule",moduleController.formModule)
 
+router.get("/moduleForm/:id",moduleController.getModuleByIdForm)
 
 
 module.exports = router;

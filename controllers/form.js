@@ -3,7 +3,7 @@ const db = require("../db")
 exports.insert = (req,res)=>{
 
 const form = {clientsInput:req.body.clientsInput, 
-                moduleInput:req.body.moduleInput, 
+                moduleInput:req.body.moduleValue, 
                 personnelInput:req.body.personnelInput, 
                 AccompanyingInput:req.body.AccompanyingInput, 
                 startDateInput:req.body.startDateInput, 
@@ -33,6 +33,23 @@ const form = {clientsInput:req.body.clientsInput,
 
     })
 
+
+
+}
+
+
+exports.getForm = (req,res)=>{
+
+    const id = req.params.id
+
+    db.query({sql:"select * from formulaire where id = ?" , values:[id]
+
+    } , (err,results,fields)=>{
+
+            res.statusCode = 200;
+            res.send(results)
+        }
+    )
 
 
 }

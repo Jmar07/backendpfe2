@@ -5,7 +5,7 @@ exports.client = (req,res)=>{
 
    
 
-    db.query({sql:"select DISTINCT des from `client_test`"
+    db.query({sql:"select DISTINCT * from `client_test`"
 
     } , (err,results,fields)=>{
 
