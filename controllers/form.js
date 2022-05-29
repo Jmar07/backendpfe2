@@ -1,8 +1,12 @@
+const cli = require("nodemon/lib/cli")
 const db = require("../db")
 
 exports.insert = (req,res)=>{
 
-const form = {clientsInput:req.body.clientsInput, 
+const form = {
+                dateInput:req.body.dateInput,
+                clientID:req.body.clientID,
+                clientsInput:req.body.clientsInput, 
                 moduleInput:req.body.moduleValue, 
                 personnelInput:req.body.personnelInput, 
                 AccompanyingInput:req.body.AccompanyingInput, 
@@ -15,7 +19,11 @@ const form = {clientsInput:req.body.clientsInput,
                 fileInput:req.body.fileInput, 
                 rapportInput:req.body.rapportInput, 
                 hours:req.body.hours, 
-                minutes:req.body.minutes} // TODO
+                minutes:req.body.minutes,
+                chauffeurInput : req.body.chauffeurInput,
+                startTimeInput2 : req.body.startTimeInput2,
+                endTimeInput2 :req.body.endTimeInput2,
+            } // TODO
 
     
     db.query({sql:"INSERT INTO formulaire set ? "}, form , (error, results , fields)=>{
@@ -42,14 +50,28 @@ exports.getForm = (req,res)=>{
 
     const id = req.params.id
 
-    db.query({sql:"select * from formulaire where id = ?" , values:[id]
+console.log(req.params);
+
+    db.query({sql:"select * from formulaire where clientID = ?" , values:[id]
 
     } , (err,results,fields)=>{
-
+            console.log(results);
             res.statusCode = 200;
             res.send(results)
         }
     )
 
+}
+
+exports.getListOfForms= (req,res)=>{
+
+    db.query({sql:"select clientsInput , moduleInput , hours , minutes , dateInput from formulaire"
+
+} , (err,results,fields)=>{
+        console.log(results);
+        res.statusCode = 200;
+        res.send(results)
+    }
+)    
 
 }

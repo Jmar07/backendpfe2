@@ -59,7 +59,7 @@ exports.getModule = (req,res)=>{
     db.query({sql:"select designation from module where idModule = ?" , values:[id]
 
     } , (err,results,fields)=>{
-
+            console.log(results);
             res.statusCode = 200;
             res.send(results)
         }

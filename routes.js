@@ -30,7 +30,8 @@ router.post("/data",)
 
 
 router.post("/form",form.insert)
-router.get("/form/:id",form.getForm)
+router.get("/form/:id/",form.getForm)
+router.get("/form",form.getListOfForms)
 
 
 router.post("/formModule",moduleController.formModule)
