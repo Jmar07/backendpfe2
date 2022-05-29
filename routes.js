@@ -32,11 +32,17 @@ router.post("/data",)
 router.post("/form",form.insert)
 router.get("/form/:id/",form.getForm)
 router.get("/form",form.getListOfForms)
+router.get("/formdate",form.getListOfDate)
+
 
 
 router.post("/formModule",moduleController.formModule)
 
 router.get("/moduleForm/:id",moduleController.getModuleByIdForm)
+
+
+router.get("/activeusers",clientController.activeUsers)
+router.get("/inactiveusers",clientController.inactiveUsers)
 
 
 module.exports = router;

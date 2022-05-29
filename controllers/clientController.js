@@ -16,3 +16,38 @@ exports.client = (req,res)=>{
     
 
 }
+
+
+
+exports.activeUsers = (req,res)=>{
+
+   
+
+    db.query({sql:"select count(*) from `accesscontrol` where Actif=1"
+
+    } , (err,results,fields)=>{
+
+            res.statusCode = 200;
+            res.send(results)
+        }
+    )
+    
+
+}
+
+
+exports.inactiveUsers = (req,res)=>{
+
+   
+
+    db.query({sql:"select count(*) from `accesscontrol` where Actif=0"
+
+    } , (err,results,fields)=>{
+
+            res.statusCode = 200;
+            res.send(results)
+        }
+    )
+    
+
+}

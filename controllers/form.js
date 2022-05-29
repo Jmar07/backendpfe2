@@ -75,3 +75,17 @@ exports.getListOfForms= (req,res)=>{
 )    
 
 }
+
+
+exports.getListOfDate= (req,res)=>{
+
+    db.query({sql:"select dateInput from formulaire"
+
+} , (err,results,fields)=>{
+        console.log(results);
+        res.statusCode = 200;
+        res.send(results)
+    }
+)    
+
+}
