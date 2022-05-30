@@ -10,21 +10,29 @@ const app = express();
 
 
 router.post("/login",loginController.login);
+router.post("/logout",loginController.logout);
+
 
 router.post("/client",clientController.client);
 router.get("/client",clientController.client);
+router.get("/activeusers",clientController.activeUsers)
+router.get("/inactiveusers",clientController.inactiveUsers)
+
 
 router.post("/module",moduleController.module);
 router.get("/module",moduleController.module);
-
 router.get("/module/:id" , moduleController.getModule)
+router.post("/formModule",moduleController.formModule)
+router.get("/moduleForm/:id",moduleController.getModuleByIdForm)
+
 
 router.post("/personnel",personnelController.personnel);
 router.get("/personnel/:id",personnelController.personnel);
 
+
 router.post("/accomp",accompController.accomp);
 router.get("/accomp",accompController.accomp);
-router.post("/logout",loginController.logout);
+
 
 router.post("/data",)
 
@@ -35,14 +43,6 @@ router.get("/form",form.getListOfForms)
 router.get("/formdate",form.getListOfDate)
 
 
-
-router.post("/formModule",moduleController.formModule)
-
-router.get("/moduleForm/:id",moduleController.getModuleByIdForm)
-
-
-router.get("/activeusers",clientController.activeUsers)
-router.get("/inactiveusers",clientController.inactiveUsers)
 
 
 module.exports = router;
